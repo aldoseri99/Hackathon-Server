@@ -12,15 +12,11 @@ app.use(express.urlencoded({ extended: false }))
 
 const indexRouter = require('./routes/indexRouter')
 const AuthRouter = require('./routes/AuthRouter')
+const RollerCoasterRouter = require("./routes/RollerCoasterRouter")
 app.use('/', indexRouter)
 app.use('/auth', AuthRouter)
-
-
-const indexRouter = require("./routes/indexRouter")
-const RollerCoasterRouter = require("./routes/RollerCoasterRouter")
-
-app.use("/", indexRouter)
 app.use("/rollerCoaster", RollerCoasterRouter)
+
 
 app.use("/", (req, res) => {
   res.send(`Connected!`)
