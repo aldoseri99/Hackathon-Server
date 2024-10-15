@@ -2,7 +2,7 @@ const { Schema } = require("mongoose")
 
 const RollerCoasterSchema = new Schema(
   {
-    name: { type: String, required: true },
+    name: { type: String },
     location: { type: String },
     speed: { type: Number },
     description: { type: String },
