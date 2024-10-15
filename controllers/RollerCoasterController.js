@@ -18,16 +18,6 @@ const CreateRollerCoaster = async (req, res) => {
   }
 }
 
-/*
-const UpdatePost = async (req, res) => {
-  try {
-    const post = await Post.findByIdAndUpdate(req.params.post_id, req.body, {new: true})
-    res.send(post)
-  } catch (error) {
-    throw error
-  }
-}
-*/
 
 const DeleteRollerCoaster = async (req, res) => {
   try {
