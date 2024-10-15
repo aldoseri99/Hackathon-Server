@@ -1,15 +1,21 @@
-const express = require('express')
+const express = require("express")
 
 const PORT = process.env.PORT || 3001
 
-const db = require('./db')
+const db = require("./db")
 
 const app = express()
 
-const indexRouter = require('./routes/indexRouter')
-app.use('/', indexRouter)
+// app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-app.use('/', (req, res) => {
+const indexRouter = require("./routes/indexRouter")
+const RollerCoasterRouter = require("./routes/RollerCoasterRouter")
+
+app.use("/", indexRouter)
+app.use("/rollerCoaster", RollerCoasterRouter)
+
+app.use("/", (req, res) => {
   res.send(`Connected!`)
 })
 
