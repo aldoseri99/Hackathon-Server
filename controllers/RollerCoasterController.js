@@ -48,6 +48,7 @@ const CreateRollerCoaster = async (req, res) => {
   }
 }
 
+
 const DeleteRollerCoaster = async (req, res) => {
   try {
     await RollerCoaster.deleteOne({ _id: req.params.rollerCoaster_id })
