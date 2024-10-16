@@ -3,25 +3,20 @@ const middleware = require('../middleware')
 
 const Register = async (req, res) => {
   try {
-    const { email, password, confirmPassword, name, phone, profilePic } =
-      req.body
+    // Extracts the necessary fields from the request body
+    const { email, password, name } = req.body
+    // Hashes the provided password
     let passwordDigest = await middleware.hashPassword(password)
+    // Checks if there has already been a user registered with that email
     let existingUser = await User.findOne({ email })
     if (existingUser) {
       return res
         .status(400)
         .send('A user with that email has already been registered!')
-    } else if (password !== confirmPassword) {
-      return res.status(400).send("the password doesn't match")
     } else {
-      const user = await User.create({
-        email,
-        passwordDigest,
-        name,
-        phone,
-        role: 'admin',
-        profilePic: './public/userProfiles/IMG_5926.jpg'
-      })
+      // Creates a new user
+      const user = await User.create({ name, email, passwordDigest })
+      // Sends the user as a response
       res.send(user)
     }
   } catch (error) {
